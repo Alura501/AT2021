@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SuiteTgCtg">
+    <test name="TestTgCtg">
+        <classes>
+            <class name="hw1.TgTest" />
+            <class name="hw1.CtgTest"/>
+        </classes>
+    </test>
+</suite>
