@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Ex1Suite]" guice-stage="DEVELOPMENT" verbose="0">
+  <test name="Functional(failed)">
+    <classes>
+      <class name="hw2.ex1.Exercise1">
+        <methods>
+          <include name="quit"/>
+          <include name="mainHeadersContentTest"/>
+          <include name="setUp"/>
+          <include name="textTest"/>
+        </methods>
+      </class> <!-- hw2.ex1.Exercise1 -->
+    </classes>
+  </test> <!-- Functional(failed) -->
+</suite> <!-- Failed suite [Ex1Suite] -->

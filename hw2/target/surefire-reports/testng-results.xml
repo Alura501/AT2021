@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="11" passed="11" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2021-05-12T20:14:32Z" name="Ex2Suite" finished-at="2021-05-12T20:14:38Z" duration-ms="6756">
+    <groups>
+    </groups>
+    <test started-at="2021-05-12T20:14:32Z" name="Functional" finished-at="2021-05-12T20:14:38Z" duration-ms="6756">
+      <class name="hw2.ex2.Exercise2">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:hw2.ex2.Exercise2@72ef8d15]" started-at="2021-05-12T23:14:32Z" name="setUp" finished-at="2021-05-12T23:14:34Z" duration-ms="2719" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="browserTitleTest()[pri:0, instance:hw2.ex2.Exercise2@72ef8d15]" started-at="2021-05-12T23:14:34Z" name="browserTitleTest" finished-at="2021-05-12T23:14:34Z" duration-ms="11" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- browserTitleTest -->
+        <test-method signature="headerServiceTest()[pri:0, instance:hw2.ex2.Exercise2@72ef8d15]" started-at="2021-05-12T23:14:34Z" name="headerServiceTest" finished-at="2021-05-12T23:14:35Z" duration-ms="657" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- headerServiceTest -->
+        <test-method signature="leftSectionServiceTest()[pri:0, instance:hw2.ex2.Exercise2@72ef8d15]" started-at="2021-05-12T23:14:35Z" name="leftSectionServiceTest" finished-at="2021-05-12T23:14:36Z" duration-ms="658" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- leftSectionServiceTest -->
+        <test-method signature="userLoginTest()[pri:0, instance:hw2.ex2.Exercise2@72ef8d15]" started-at="2021-05-12T23:14:36Z" name="userLoginTest" finished-at="2021-05-12T23:14:36Z" duration-ms="348" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- userLoginTest -->
+        <test-method signature="siteURLTest()[pri:0, instance:hw2.ex2.Exercise2@72ef8d15]" started-at="2021-05-12T23:14:36Z" name="siteURLTest" finished-at="2021-05-12T23:14:36Z" duration-ms="6" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- siteURLTest -->
+        <test-method signature="LogginedTest()[pri:0, instance:hw2.ex2.Exercise2@72ef8d15]" started-at="2021-05-12T23:14:36Z" name="LogginedTest" finished-at="2021-05-12T23:14:36Z" depends-on-methods="hw2.ex2.Exercise2.userLoginTest" duration-ms="39" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LogginedTest -->
+        <test-method signature="DifElementsTest()[pri:0, instance:hw2.ex2.Exercise2@72ef8d15]" started-at="2021-05-12T23:14:36Z" name="DifElementsTest" finished-at="2021-05-12T23:14:37Z" depends-on-methods="hw2.ex2.Exercise2.headerServiceTest, hw2.ex2.Exercise2.LogginedTest" duration-ms="754" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- DifElementsTest -->
+        <test-method signature="checkboxesTest()[pri:0, instance:hw2.ex2.Exercise2@72ef8d15]" started-at="2021-05-12T23:14:37Z" name="checkboxesTest" finished-at="2021-05-12T23:14:37Z" depends-on-methods="hw2.ex2.Exercise2.DifElementsTest" duration-ms="252" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkboxesTest -->
+        <test-method signature="dropdownTest()[pri:0, instance:hw2.ex2.Exercise2@72ef8d15]" started-at="2021-05-12T23:14:37Z" name="dropdownTest" finished-at="2021-05-12T23:14:37Z" depends-on-methods="hw2.ex2.Exercise2.DifElementsTest" duration-ms="207" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- dropdownTest -->
+        <test-method signature="radioTest()[pri:0, instance:hw2.ex2.Exercise2@72ef8d15]" started-at="2021-05-12T23:14:37Z" name="radioTest" finished-at="2021-05-12T23:14:37Z" depends-on-methods="hw2.ex2.Exercise2.DifElementsTest" duration-ms="163" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- radioTest -->
+        <test-method signature="unselectCheckboxesTest()[pri:0, instance:hw2.ex2.Exercise2@72ef8d15]" started-at="2021-05-12T23:14:37Z" name="unselectCheckboxesTest" finished-at="2021-05-12T23:14:38Z" depends-on-methods="hw2.ex2.Exercise2.checkboxesTest" duration-ms="276" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- unselectCheckboxesTest -->
+        <test-method is-config="true" signature="quit()[pri:0, instance:hw2.ex2.Exercise2@72ef8d15]" started-at="2021-05-12T23:14:38Z" name="quit" finished-at="2021-05-12T23:14:38Z" duration-ms="650" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- quit -->
+      </class> <!-- hw2.ex2.Exercise2 -->
+    </test> <!-- Functional -->
+  </suite> <!-- Ex2Suite -->
+</testng-results>
