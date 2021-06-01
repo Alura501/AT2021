@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Ex1Suite" verbose="1">
+    <test name="Functional">
+        <classes>
+            <class name="HW3.Ex1Test.Ex1Test"/>
+        </classes>
+    </test>
+</suite>
