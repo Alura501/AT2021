@@ -10,8 +10,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
+    <maven.compiler.source>15</maven.compiler.source>
+    <maven.compiler.target>15</maven.compiler.target>
     <aspectj.version>1.8.10</aspectj.version>
   </properties>
 
@@ -19,7 +19,7 @@
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
-      <version>6.8</version>
+      <version>7.4.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -28,38 +28,106 @@
       <version>3.141.59</version>
     </dependency>
     <dependency>
-      <groupId>io.cucumber</groupId>
-      <artifactId>cucumber-testng</artifactId>
-      <version>6.10.0</version>
-    </dependency>
-    <dependency>
-      <groupId>io.cucumber</groupId>
-      <artifactId>cucumber-java</artifactId>
-      <version>6.10.0</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
       <groupId>io.github.bonigarcia</groupId>
       <artifactId>webdrivermanager</artifactId>
       <version>4.3.1</version>
     </dependency>
     <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <version>1.7.30</version>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-core</artifactId>
+      <version>6.10.3</version>
     </dependency>
     <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-simple</artifactId>
-      <version>1.7.30</version>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-java</artifactId>
+      <version>6.10.3</version>
     </dependency>
     <dependency>
-      <groupId>org.testng</groupId>
-      <artifactId>testng</artifactId>
-      <version>7.3.0</version>
-      <scope>test</scope>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-testng</artifactId>
+      <version>6.10.3</version>
+    </dependency>
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-cucumber-jvm</artifactId>
+      <version>2.13.9</version>
+    </dependency>
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-testng</artifactId>
+      <version>2.13.9</version>
     </dependency>
   </dependencies>
+
+  <build>
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+      <plugins>
+        <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+        <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.5.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.8.2</version>
+        </plugin>
+        <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
+        <plugin>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.7.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>3.0.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.22.1</version>
+          <configuration>
+            <argLine>
+              -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+              -Dcucumber.options="--plugin io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm"
+            </argLine>
+            <suiteXmlFiles>
+              <suiteXmlFile>Suites/Exercise1_suite.xml</suiteXmlFile>
+              <suiteXmlFile>Suites/Exercise2_suite.xml</suiteXmlFile>
+            </suiteXmlFiles>
+            <systemPropertyVariables>
+              <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
+              <allure.link.issue.pattern>https://example.org/browse/{}</allure.link.issue.pattern>
+              <allure.link.tms.pattern>https://example.org/browse/{}</allure.link.tms.pattern>
+            </systemPropertyVariables>
+          </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>org.aspectj</groupId>
+              <artifactId>aspectjweaver</artifactId>
+              <version>${aspectj.version}</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
 
 
   <profiles>
@@ -75,10 +143,26 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <version>3.0.0-M5</version>
             <configuration>
+              <argLine>
+                -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                -Dcucumber.options="--plugin io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm"
+              </argLine>
               <suiteXmlFiles>
                 <suiteXmlFile>Suites/Exercise1_suite.xml</suiteXmlFile>
               </suiteXmlFiles>
+              <systemPropertyVariables>
+                <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
+                <allure.link.issue.pattern>https://example.org/browse/{}</allure.link.issue.pattern>
+                <allure.link.tms.pattern>https://example.org/browse/{}</allure.link.tms.pattern>
+              </systemPropertyVariables>
             </configuration>
+            <dependencies>
+              <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectj.version}</version>
+              </dependency>
+            </dependencies>
           </plugin>
         </plugins>
       </build>
@@ -92,10 +176,26 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <version>3.0.0-M5</version>
             <configuration>
+              <argLine>
+                -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                -Dcucumber.options="--plugin io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm"
+              </argLine>
               <suiteXmlFiles>
                 <suiteXmlFile>Suites/Exercise2_suite.xml</suiteXmlFile>
               </suiteXmlFiles>
+              <systemPropertyVariables>
+                <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
+                <allure.link.issue.pattern>https://example.org/browse/{}</allure.link.issue.pattern>
+                <allure.link.tms.pattern>https://example.org/browse/{}</allure.link.tms.pattern>
+              </systemPropertyVariables>
             </configuration>
+            <dependencies>
+              <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectj.version}</version>
+              </dependency>
+            </dependencies>
           </plugin>
         </plugins>
       </build>
@@ -109,11 +209,27 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <version>3.0.0-M5</version>
             <configuration>
+              <argLine>
+                -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                -Dcucumber.options="--plugin io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm"
+              </argLine>
               <suiteXmlFiles>
                 <suiteXmlFile>Suites/Exercise1_suite.xml</suiteXmlFile>
                 <suiteXmlFile>Suites/Exercise2_suite.xml</suiteXmlFile>
               </suiteXmlFiles>
+              <systemPropertyVariables>
+                <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
+                <allure.link.issue.pattern>https://example.org/browse/{}</allure.link.issue.pattern>
+                <allure.link.tms.pattern>https://example.org/browse/{}</allure.link.tms.pattern>
+              </systemPropertyVariables>
             </configuration>
+            <dependencies>
+              <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectj.version}</version>
+              </dependency>
+            </dependencies>
           </plugin>
         </plugins>
       </build>
